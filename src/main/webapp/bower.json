@@ -7,6 +7,8 @@
     "text": "requirejs-text#^2.0.15",
     "angular-ui-router": "^0.2.18",
     "almond": "~0.3.2"
+  },
+  "devDependencies": {
+    "glyphicons-only-bootstrap": "^0.0.1"
   }
 }
-

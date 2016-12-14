@@ -1,2 +1,17 @@
-<h1>Dashboard</h1>
-<div ui-view></div>
+<div class="dashboard">
+    <nav>
+        <ul class="first"><li>Manage</li></ul>
+        <ul class="last">
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="clear"></div>
+    <div class="dashboard-main">
+        <aside>
+            <div class="aside-container">
+                <header>Modules</header>
+            </div>
+        </aside>
+        <section ui-view ></section>
+    </div>
+</div>
