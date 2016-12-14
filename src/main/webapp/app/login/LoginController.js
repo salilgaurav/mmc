@@ -17,7 +17,7 @@ define([
             if( data.status ) {
                $scope.errorMsg = data.status.statusMsg;
             } else {
-                $location.path('/dashboard/member');
+                $location.path('/dashboard/member/list');
             }
         };
 

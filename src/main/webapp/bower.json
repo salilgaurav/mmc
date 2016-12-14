@@ -9,6 +9,7 @@
     "almond": "~0.3.2"
   },
   "devDependencies": {
-    "glyphicons-only-bootstrap": "^0.0.1"
+    "glyphicons-only-bootstrap": "^0.0.1",
+    "Ionicons": "ionicons#^2.0.1"
   }
 }

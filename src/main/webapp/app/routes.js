@@ -1,6 +1,6 @@
 //	README
 //	Statement like 'text!./home/index.html' creates a namespace for html files
-//  and through gulp task it is converted into javascript template using text library.
+//  and  it is converted into javascript template using text library.
 define([
 	'angular',
 
@@ -22,7 +22,16 @@ define([
 	'text!./dashboard/index.html',
 
 	'./dashboard/member/MemberController',
-	'text!./dashboard/member/index.html'
+	'text!./dashboard/member/index.html',
+	'text!./dashboard/member/members.list.html',
+	'text!./dashboard/member/members.add.html',
+	'text!./dashboard/member/member.edit.html',
+
+	'./dashboard/events/EventController',
+    'text!./dashboard/events/index.html',
+    'text!./dashboard/events/event.list.html',
+    'text!./dashboard/events/event.add.html',
+    'text!./dashboard/events/event.edit.html'
 
 ], function (
 	ng,
@@ -45,7 +54,16 @@ define([
 	dashboardTemplate,
 
 	MemberController,
-	memberTemplate
+	memberTemplate,
+	memberList,
+	memberAdd,
+	memberEdit,
+
+	EventController,
+	eventTemplate,
+	eventList,
+	eventAdd,
+	eventEdit
 
 
 ) {
@@ -96,8 +114,58 @@ define([
 			    parent: 'dashboard',
 			    url: '/member',
 			    template: memberTemplate,
-			    controller: MemberController
-			});
+			    controller: MemberController,
+			    abstract: true
+			})
+			.state('dashboard.member.list',{
+			    parent: 'dashboard.member',
+			    url: '/list',
+			    template: memberList
+			})
+			.state('dashboard.member.add',{
+            	parent: 'dashboard.member',
+            	url: '/add',
+            	template: memberAdd
+            })
+           .state('dashboard.member.edit',{
+                       	parent: 'dashboard.member',
+                       	url: '/edit/:user',
+                       	template: memberEdit,
+                       	params:{
+                       	    user:{
+                       	        value:null,
+                       	        squash:true
+                       	    }
+                       	}
+                       })
+			.state('dashboard.event',{
+                parent: 'dashboard',
+                url: '/event',
+            	template: eventTemplate,
+                controller: EventController,
+                abstract: true
+            })
+            .state('dashboard.event.list',{
+            	parent: 'dashboard.event',
+            	url: '/list',
+            	template: eventList
+            })
+            .state('dashboard.event.add',{
+                parent: 'dashboard.event',
+                url: '/add',
+                template: eventAdd
+            })
+            .state('dashboard.event.edit',{
+                parent: 'dashboard.event',
+                url: '/edit/:id',
+                template: eventAdd,
+                params: {
+                    id:{
+                        value:null,
+                        squash: true
+                    }
+                }
+            });
 
 
 
