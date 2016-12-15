@@ -1,0 +1,8 @@
+<div>
+    <input type="file" class="custom-file-input" file-model="myFile">
+    <input type="submit" value="upload" ng-click="uploadFile()">
+
+    <div ng-repeat="image in images">
+        <img ng-src="data:image/png;base64,{{image}}">
+    </div>
+</div>

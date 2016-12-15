@@ -35,7 +35,9 @@ define([
 
     './dashboard/album/AlbumController',
     'text!./dashboard/album/index.html',
+    './dashboard/album/AlbumListController',
     'text!./dashboard/album/album.list.html',
+    './dashboard/album/AlbumEditController',
     'text!./dashboard/album/album.edit.html'
 
 ], function (
@@ -72,7 +74,9 @@ define([
 
 	AlbumController,
 	albumTemplate,
+	AlbumListController,
 	albumList,
+	AlbumEditController,
 	albumEdit
 
 
@@ -186,7 +190,8 @@ define([
             .state('dashboard.album.list',{
                 parent: 'dashboard.album',
                 url: '/list',
-                template: albumList
+                template: albumList,
+                controller: AlbumListController
             })
             .state('dashboard.album.edit',{
                 parent: 'dashboard.album',
@@ -197,7 +202,8 @@ define([
                         value: null,
                         squash: true
                     }
-                }
+                },
+                controller: AlbumEditController
             });
 
 
