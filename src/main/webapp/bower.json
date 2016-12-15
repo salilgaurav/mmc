@@ -11,6 +11,7 @@
   "devDependencies": {
     "glyphicons-only-bootstrap": "^0.0.1",
     "Ionicons": "ionicons#^2.0.1",
-    "angular-animate": "1.5.5"
+    "angular-animate": "1.5.5",
+    "pikaday": "^1.5.1"
   }
 }
