@@ -41,7 +41,10 @@ define([
     './dashboard/album/AlbumListController',
     'text!./dashboard/album/album.list.html',
     './dashboard/album/AlbumEditController',
-    'text!./dashboard/album/album.edit.html'
+    'text!./dashboard/album/album.edit.html',
+    './dashboard/album/AlbumAddController',
+    'text!./dashboard/album/album.add.html'
+
 
 ], function (
 	ng,
@@ -83,7 +86,9 @@ define([
 	AlbumListController,
 	albumList,
 	AlbumEditController,
-	albumEdit
+	albumEdit,
+	AlbumAddController,
+	albumAdd
 
 
 ) {
@@ -201,6 +206,12 @@ define([
                 url: '/list',
                 template: albumList,
                 controller: AlbumListController
+            })
+            .state('dashboard.album.add',{
+                parent: 'dashboard.album',
+                url: '/add',
+                template: albumAdd,
+                controller: AlbumAddController
             })
             .state('dashboard.album.edit',{
                 parent: 'dashboard.album',

@@ -8,6 +8,7 @@ define([
 	return [ '$scope' , '$location', '$stateParams', 'albumService' ,
 	function ( $scope ,  $location ,  $stateParams , albumService ) {
 
+            $scope.showUpload = true;
 
 	        var getSuccess = function( data ) {
 	            console.log(data);
@@ -33,9 +34,14 @@ define([
             				var file = $scope.myFile;
             				var name = 'Salil';
             				var albumId = $stateParams.id;
-            				var date = '1990-11-20';
+            				var date = new Date();
+            				    date = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
             				console.log('file is ' + JSON.stringify(file));
             				albumService.upload( file, name, albumId , date).success( uploadSuccess ).error( uploadError );
+            };
+
+            $scope.cancel = function(){
+                $scope.myFile = undefined;
             };
 
             // initial image index
