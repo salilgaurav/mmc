@@ -31,7 +31,12 @@ define([
     'text!./dashboard/events/index.html',
     'text!./dashboard/events/event.list.html',
     'text!./dashboard/events/event.add.html',
-    'text!./dashboard/events/event.edit.html'
+    'text!./dashboard/events/event.edit.html',
+
+    './dashboard/album/AlbumController',
+    'text!./dashboard/album/index.html',
+    'text!./dashboard/album/album.list.html',
+    'text!./dashboard/album/album.edit.html'
 
 ], function (
 	ng,
@@ -63,7 +68,12 @@ define([
 	eventTemplate,
 	eventList,
 	eventAdd,
-	eventEdit
+	eventEdit,
+
+	AlbumController,
+	albumTemplate,
+	albumList,
+	albumEdit
 
 
 ) {
@@ -127,17 +137,17 @@ define([
             	url: '/add',
             	template: memberAdd
             })
-           .state('dashboard.member.edit',{
-                       	parent: 'dashboard.member',
-                       	url: '/edit/:user',
-                       	template: memberEdit,
-                       	params:{
-                       	    user:{
-                       	        value:null,
-                       	        squash:true
-                       	    }
-                       	}
-                       })
+            .state('dashboard.member.edit',{
+                 parent: 'dashboard.member',
+                 url: '/edit/:user',
+                 template: memberEdit,
+                 params:{
+                       user:{
+                       	   value:null,
+                       	   squash:true
+                       }
+                 }
+            })
 			.state('dashboard.event',{
                 parent: 'dashboard',
                 url: '/event',
@@ -162,6 +172,29 @@ define([
                 params: {
                     id:{
                         value:null,
+                        squash: true
+                    }
+                }
+            })
+            .state('dashboard.album',{
+                parent: 'dashboard',
+                url: '/album',
+                template: albumTemplate,
+                controller: AlbumController,
+                abstract: true
+            })
+            .state('dashboard.album.list',{
+                parent: 'dashboard.album',
+                url: '/list',
+                template: albumList
+            })
+            .state('dashboard.album.edit',{
+                parent: 'dashboard.album',
+                url: '/edit/:id',
+                template: albumEdit,
+                params: {
+                    id: {
+                        value: null,
                         squash: true
                     }
                 }
