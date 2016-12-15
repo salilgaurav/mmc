@@ -3,6 +3,7 @@
 define([
 	'angular',
 	'uiRouter',
+	'ngAnimate',
 	'routes',
 
 	'./services/LoginService',
@@ -14,6 +15,7 @@ define([
 
 	var app = ng.module('app', [
         'ui.router',
+        'ngAnimate',
         'app.routes',
         'app.loginService',
         'app.albumService',
