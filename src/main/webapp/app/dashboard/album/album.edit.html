@@ -1,8 +1,27 @@
 <div>
+    <form>
     <input type="file" class="custom-file-input" file-model="myFile">
     <input type="submit" value="upload" ng-click="uploadFile()">
+    </form>
+    <div >
+        <div class="container slider">
 
-    <div ng-repeat="image in images">
-        <img ng-src="data:image/png;base64,{{image}}">
+            <img ng-repeat="image in images" class="slide" ng-swipe-right="showPrev()" ng-swipe-left="showNext()" ng-show="isActive($index)" ng-src="data:image/png;base64,{{image}}" />
+
+            <a class="arrow prev"  ng-click="showPrev()"></a>
+
+            <a class="arrow next"  ng-click="showNext()"></a>
+
+        </div>
+        <ul class="nav">
+
+            <li ng-repeat="image in images" ng-class="{'active':isActive($index)}">
+
+                <img ng-src="data:image/png;base64,{{image}}"  ng-click="showPhoto($index);" />
+
+            </li>
+
+        </ul>
+
     </div>
 </div>
