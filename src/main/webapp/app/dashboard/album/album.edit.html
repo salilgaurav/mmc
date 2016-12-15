@@ -13,15 +13,15 @@
             <a class="arrow next"  ng-click="showNext()"></a>
 
         </div>
-        <ul class="nav">
-
-            <li ng-repeat="image in images" ng-class="{'active':isActive($index)}">
-
-                <img ng-src="data:image/png;base64,{{image}}"  ng-click="showPhoto($index);" />
-
-            </li>
-
-        </ul>
 
     </div>
+    <ul class="nav">
+
+        <li ng-repeat="image in images" ng-class="{'active':isActive($index)}">
+
+            <img ng-src="data:image/png;base64,{{image}}"  ng-click="showPhoto($index);" />
+
+        </li>
+
+    </ul>
 </div>

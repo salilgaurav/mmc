@@ -5,9 +5,9 @@ define([
 ) {
 	'use strict';
 
-	var loginService = ng.module('app.albumService' , []);
+	var albumService = ng.module('app.albumService' , []);
 
-	return loginService.factory( 'albumService', ['$http',  function ( $http ) {
+	return albumService.factory( 'albumService', ['$http',  function ( $http ) {
 
 		// Adding a dev url for local, comment out in index.html before deployment!
 		var url = 'http://localhost:8081/album';

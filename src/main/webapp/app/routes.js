@@ -23,8 +23,11 @@ define([
 
 	'./dashboard/member/MemberController',
 	'text!./dashboard/member/index.html',
+	'./dashboard/member/MemberListController',
 	'text!./dashboard/member/members.list.html',
+	'./dashboard/member/MemberAddController',
 	'text!./dashboard/member/members.add.html',
+	'./dashboard/member/MemberEditController',
 	'text!./dashboard/member/member.edit.html',
 
 	'./dashboard/events/EventController',
@@ -62,8 +65,11 @@ define([
 
 	MemberController,
 	memberTemplate,
+	MemberListController,
 	memberList,
+	MemberAddController,
 	memberAdd,
+	MemberEditController,
 	memberEdit,
 
 	EventController,
@@ -134,17 +140,20 @@ define([
 			.state('dashboard.member.list',{
 			    parent: 'dashboard.member',
 			    url: '/list',
-			    template: memberList
+			    template: memberList,
+			    controller: MemberListController
 			})
 			.state('dashboard.member.add',{
             	parent: 'dashboard.member',
             	url: '/add',
-            	template: memberAdd
+            	template: memberAdd,
+            	controller: MemberAddController
             })
             .state('dashboard.member.edit',{
                  parent: 'dashboard.member',
                  url: '/edit/:user',
                  template: memberEdit,
+                 controller: MemberEditController,
                  params:{
                        user:{
                        	   value:null,

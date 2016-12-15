@@ -8,6 +8,7 @@ define([
 
 	'./services/LoginService',
 	'./services/AlbumService',
+	'./services/MemberService',
 
 	'./directives/FileModel'
 ], function ( ng ) {
@@ -19,6 +20,8 @@ define([
         'app.routes',
         'app.loginService',
         'app.albumService',
+        'app.memberService',
+
         'app.fileModel'
 	]);
 
