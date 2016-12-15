@@ -16,6 +16,7 @@ define([
         var successCallback = function( data ) {
             if( data.status ) {
                $scope.errorMsg = data.status.statusMsg;
+               alert($scope.errorMsg);
             } else {
                 $location.path('/dashboard/member/list');
             }

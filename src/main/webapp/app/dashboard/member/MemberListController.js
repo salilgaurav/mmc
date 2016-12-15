@@ -28,7 +28,10 @@ define([
             };
 
             $scope.delete = function( email ) {
-                memberService.delete( email ).success( deleteMemberSuccess ).error( deleteMemberError );
+                $scope.true = confirm('Delete '+email+' ?');
+                if( $scope.true ){
+                    memberService.delete( email ).success( deleteMemberSuccess ).error( deleteMemberError );
+                }
             };
 
 	}];

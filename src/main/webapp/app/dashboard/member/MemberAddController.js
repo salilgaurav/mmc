@@ -28,6 +28,10 @@ define([
 
         var addSuccess  = function( data ){
 
+                alert( data.statusMsg );
+                if( data.status == 'SUCCESS'){
+                    $location.path('/dashboard/member/list');
+                }
         };
 
         var addError = function( data ) {

@@ -25,6 +25,7 @@ define([
 
             var updateSuccess = function( data ) {
                 $scope.member = ng.copy( $scope.memberClone );
+                alert(data.statusMsg);
             };
 
             var updateError = function( data ) {
