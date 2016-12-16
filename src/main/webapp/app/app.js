@@ -10,7 +10,9 @@ define([
 	'./services/AlbumService',
 	'./services/MemberService',
 
-	'./directives/FileModel'
+	'./directives/FileModel',
+
+	'./filters/highlight'
 ], function ( ng ) {
 	'use strict';
 
@@ -22,7 +24,9 @@ define([
         'app.albumService',
         'app.memberService',
 
-        'app.fileModel'
+        'app.fileModel',
+
+        'app.highlight'
 	]);
 
 	ng.bootstrap( document, ['app'] );
