@@ -10,7 +10,8 @@ requirejs.config({
 		'uiRouter': '../bower_components/angular-ui-router/release/angular-ui-router',
 		'almond': '../bower_components/almond/almond',
 		'ngAnimate': '../bower_components/angular-animate/angular-animate',
-		'pikaday': '../bower_components/pikaday/pikaday'
+		'pikaday': '../bower_components/pikaday/pikaday',
+		'moment': '../bower_components/moment/moment'
 	},
 	shim: {
 		'angular': {
