@@ -1,18 +1,41 @@
 define([
-	'angular'
+	'angular',
+	'flatpickr',
+	'moment'
 
 ], function (
-	ng
+	ng,
+	flatpickr,
+	moment
 ) {
 	'use strict';
 	return [ '$scope' , '$location', '$stateParams' , 'eventService' ,
 	function ( $scope ,  $location ,  $stateParams ,eventService ) {
 
-
+            var startPicker , endPicker;
             var getEventSuccess = function( data ) {
 
                 $scope.event = data;
                 $scope.eventClone = ng.copy( $scope.event );
+
+
+               startPicker =  document.getElementById("start").flatpickr( {
+                            enableTime: true,
+                            defaultDate: $scope.eventClone.eventStart,
+
+                            altInput: true,
+                            altFormat: "Y-m-d h:i K"
+                        });
+
+               endPicker = document.getElementById("end").flatpickr( {
+                            enableTime: true,
+                            utc: true,
+                            defaultDate: $scope.eventClone.eventEnd,
+
+                            altInput: true,
+                            altFormat: "Y-m-d h:i K"
+                         });
+
             };
 
             var getEventError = function( data ) {
@@ -37,6 +60,24 @@ define([
 
             $scope.reset = function(){
                 $scope.eventClone = ng.copy( $scope.event );
+                startPicker.destroy();
+                endPicker.destroy();
+                startPicker =  document.getElementById("start").flatpickr( {
+                                            enableTime: true,
+                                            defaultDate: $scope.eventClone.eventStart,
+
+                                            altInput: true,
+                                            altFormat: "Y-m-d h:i K"
+                                        });
+
+                endPicker = document.getElementById("end").flatpickr( {
+                                            enableTime: true,
+                                            utc: true,
+                                            defaultDate: $scope.eventClone.eventEnd,
+
+                                            altInput: true,
+                                            altFormat: "Y-m-d h:i K"
+                                         });
             };
 
 	}];

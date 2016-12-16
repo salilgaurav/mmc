@@ -1,8 +1,9 @@
 define([
-	'angular'
-
+	'angular',
+	'flatpickr'
 ], function (
-	ng
+	ng,
+	flatpickr
 ) {
 	'use strict';
 	return [ '$scope' , '$location', 'eventService' ,
@@ -23,6 +24,13 @@ define([
 
         };
 
+        document.getElementById("start").flatpickr( {
+            enableTime: true
+        });
+
+         document.getElementById("end").flatpickr( {
+            enableTime: true
+         });
 
 	}];
 });
