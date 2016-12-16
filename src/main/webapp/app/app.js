@@ -9,6 +9,7 @@ define([
 	'./services/LoginService',
 	'./services/AlbumService',
 	'./services/MemberService',
+	'./services/EventService',
 
 	'./directives/FileModel',
 
@@ -23,6 +24,7 @@ define([
         'app.loginService',
         'app.albumService',
         'app.memberService',
+        'app.eventService',
 
         'app.fileModel',
 

@@ -24,7 +24,7 @@ define([
             $scope.info.password = $scope.member.email;
 
             memberService.add( $scope.info ).success( addSuccess ).error( addError );
-        }
+        };
 
         var addSuccess  = function( data ){
 

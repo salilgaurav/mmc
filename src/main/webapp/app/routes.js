@@ -32,8 +32,11 @@ define([
 
 	'./dashboard/events/EventController',
     'text!./dashboard/events/index.html',
+    './dashboard/events/EventListController',
     'text!./dashboard/events/event.list.html',
+    './dashboard/events/EventAddController',
     'text!./dashboard/events/event.add.html',
+    './dashboard/events/EventEditController',
     'text!./dashboard/events/event.edit.html',
 
     './dashboard/album/AlbumController',
@@ -77,8 +80,11 @@ define([
 
 	EventController,
 	eventTemplate,
+	EventListController,
 	eventList,
+	EventAddController,
 	eventAdd,
+	EventEditController,
 	eventEdit,
 
 	AlbumController,
@@ -176,23 +182,26 @@ define([
             .state('dashboard.event.list',{
             	parent: 'dashboard.event',
             	url: '/list',
-            	template: eventList
+            	template: eventList,
+            	controller: EventListController
             })
             .state('dashboard.event.add',{
                 parent: 'dashboard.event',
                 url: '/add',
-                template: eventAdd
+                template: eventAdd,
+                controller: EventAddController
             })
             .state('dashboard.event.edit',{
                 parent: 'dashboard.event',
                 url: '/edit/:id',
-                template: eventAdd,
+                template: eventEdit,
                 params: {
                     id:{
                         value:null,
                         squash: true
                     }
-                }
+                },
+                controller: EventEditController
             })
             .state('dashboard.album',{
                 parent: 'dashboard',

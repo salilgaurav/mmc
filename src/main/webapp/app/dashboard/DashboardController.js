@@ -1,10 +1,12 @@
 define([
 	'angular',
-	'pikaday'
+	'pikaday',
+	'moment'
 
 ], function (
 	ng,
-	pikaday
+	pikaday,
+	moment
 ) {
 	'use strict';
 	return [ '$scope' , '$location',
@@ -25,13 +27,13 @@ define([
             }
 
             function startTime() {
-                var today = new Date(),
-                    h = checkTime(today.getHours()),
-                    m = checkTime(today.getMinutes()),
-                    s = checkTime(today.getSeconds());
+                var today = new moment(),
+                    h = checkTime(today.hours()),
+                    m = checkTime(today.minutes()),
+                    s = checkTime(today.seconds());
                 document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
                 var t = setTimeout(function () {
-                    startTime()
+                    startTime();
                 }, 500);
             }
             startTime();
