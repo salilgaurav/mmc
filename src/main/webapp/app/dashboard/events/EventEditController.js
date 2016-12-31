@@ -21,6 +21,7 @@ define([
 
                startPicker =  document.getElementById("start").flatpickr( {
                             enableTime: true,
+                            utc: true,
                             defaultDate: $scope.eventClone.eventStart,
 
                             altInput: true,
@@ -45,7 +46,8 @@ define([
             eventService.get( $stateParams.id ).success( getEventSuccess ).error( getEventError );
 
             $scope.save = function(){
-
+                    $scope.eventClone.eventStart = moment($scope.eventClone.eventStart).toJSON();
+                    $scope.eventClone.eventEnd = moment($scope.eventClone.eventEnd).toJSON();
                     eventService.update( $scope.eventClone ).success( saveSuccess ).error( saveError );
             };
 
