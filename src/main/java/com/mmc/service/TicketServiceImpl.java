@@ -23,6 +23,7 @@ public class TicketServiceImpl {
 
         TicketEntity ticketEntity = new TicketEntity(ticket);
         ticketEntity.setId( UUID.randomUUID().toString());
+        System.out.println("Adding tikcet ===================>" + ticketEntity.toString());
         ticketRepository.save(ticketEntity);
 
     }

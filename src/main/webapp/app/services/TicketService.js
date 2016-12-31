@@ -5,20 +5,20 @@ define([
 ) {
 	'use strict';
 
-	var memberService = ng.module('app.ticketService' , []);
+	var ticketService = ng.module('app.ticketService' , []);
 
-	return memberService.factory( 'ticketService', ['$http',  function ( $http ) {
+	return ticketService.factory( 'ticketService', ['$http',  function ( $http ) {
 
 		// Adding a dev url for local, comment out in index.html before deployment!
 		var url = 'http://localhost:8081/ticket';
 
 		return {
-			create: function ( ticket ) {
-				return $http.post( url+'/create', member );
+			add: function ( ticket ) {
+				return $http.post( url+'/add', ticket );
 			},
 
 			update: function ( ticket ) {
-               	return $http.put( url+'/update', member );
+               	return $http.put( url+'/update', ticket );
             },
 
 			list: function() {

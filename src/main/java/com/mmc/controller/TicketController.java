@@ -51,7 +51,7 @@ public class TicketController {
     }
 
     @RequestMapping(value = "/update",
-            method = RequestMethod.POST,
+            method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8")
     public ResponseEntity<Response> updateTicket(@RequestBody Ticket ticket, HttpServletRequest request,
                                               HttpServletResponse response) {

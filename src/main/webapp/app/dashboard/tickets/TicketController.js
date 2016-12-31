@@ -5,9 +5,8 @@ define([
 	ng
 ) {
 	'use strict';
-	return [ '$scope' , '$location',
-	function ( $scope ,  $location ) {
-
+	return [ '$scope' , '$location', 'ticketService' ,
+	function ( $scope ,  $location , ticketService ) {
 
 
 	}];

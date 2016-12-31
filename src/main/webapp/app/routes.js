@@ -112,7 +112,7 @@ define([
 	TicketEditController,
 	ticketEdit,
 	TicketAddController,
-	ticketAdd,
+	ticketAdd
 
 
 
@@ -256,18 +256,18 @@ define([
             .state('dashboard.ticket',{
                 parent: 'dashboard',
                 url: '/ticket',
-                template: ticket,
+                template: ticketTemplate,
                 controller: TicketController,
                 abstract: true
             })
             .state('dashboard.ticket.list',{
-                parent: 'dashboard.album',
+                parent: 'dashboard.ticket',
                 url: '/list',
                 template: ticketList,
                 controller: TicketListController
             })
             .state('dashboard.ticket.add',{
-                parent: 'dashboard.album',
+                parent: 'dashboard.ticket',
                 url: '/add',
                 template: ticketAdd,
                 controller: TicketAddController
