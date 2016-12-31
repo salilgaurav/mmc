@@ -16,8 +16,7 @@
             <div>
                 <select ng-model="ticket.eventId">
                     <option value="">Select</option>
-                    <option value="internal">Internal event</option>
-                    <option value="external">External event</option>
+                    <option value="{{ event.eventId }}" ng-repeat="event in events">{{ event.eventName }}</option>
                 </select>
             </div>
         </div>
