@@ -36,4 +36,12 @@ public class AlbumServiceImpl implements AlbumService{
         }
         return albumList;
     }
+
+    public void rename(Album album){
+        albumRepository.save(new AlbumEntity(album));
+    }
+
+    public void delete(Album album){
+        albumRepository.delete(new AlbumEntity(album));
+    }
 }

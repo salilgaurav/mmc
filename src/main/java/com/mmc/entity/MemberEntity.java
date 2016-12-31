@@ -33,6 +33,9 @@ public class MemberEntity implements Serializable{
     @Column(name = "status")
     private boolean status;
 
+    @Column(name = "role")
+    private String role;
+
     @EmbeddedId
     private MemberEntityPK memberEntityPk;
 
@@ -96,6 +99,14 @@ public class MemberEntity implements Serializable{
         this.status = status;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "MemberEntity{" +
@@ -106,6 +117,7 @@ public class MemberEntity implements Serializable{
                 ", address='" + address + '\'' +
                 ", pass='" + pass + '\'' +
                 ", status=" + status +
+                ", role=" + role +
                 ", memberEntityPk=" + memberEntityPk +
                 '}';
     }

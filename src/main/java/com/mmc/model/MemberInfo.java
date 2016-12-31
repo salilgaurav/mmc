@@ -25,6 +25,8 @@ public class MemberInfo implements Serializable {
 
     private boolean status;
 
+    private String role;
+
     public String getEmail() {
         return email;
     }
@@ -91,6 +93,7 @@ public class MemberInfo implements Serializable {
                 ", type=" + type +
                 ", address='" + address + '\'' +
                 ", status='" + status + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 
@@ -102,6 +105,7 @@ public class MemberInfo implements Serializable {
         this.phone = memberEntity.getPhone();
         this.type = memberEntity.getType();
         this.status = memberEntity.isStatus();
+        this.role = memberEntity.getRole();
     }
 
     public MemberInfo(){

@@ -25,7 +25,7 @@ public class LoginController {
     private LoginServiceImpl loginService;
 
 
-    @RequestMapping(value = "",
+    @RequestMapping(value = "/admin",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8")
     public ResponseEntity<LoginResponse> login(@RequestBody PasswordInfo passwordInfo, HttpServletRequest request,

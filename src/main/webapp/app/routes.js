@@ -46,7 +46,16 @@ define([
     './dashboard/album/AlbumEditController',
     'text!./dashboard/album/album.edit.html',
     './dashboard/album/AlbumAddController',
-    'text!./dashboard/album/album.add.html'
+    'text!./dashboard/album/album.add.html',
+
+    './dashboard/tickets/TicketController',
+    'text!./dashboard/tickets/index.html',
+    './dashboard/tickets/TicketListController',
+    'text!./dashboard/tickets/ticket.list.html',
+    './dashboard/tickets/TicketEditController',
+    'text!./dashboard/tickets/ticket.edit.html',
+    './dashboard/tickets/TicketAddController',
+    'text!./dashboard/tickets/ticket.add.html'
 
 
 ], function (
@@ -94,7 +103,17 @@ define([
 	AlbumEditController,
 	albumEdit,
 	AlbumAddController,
-	albumAdd
+	albumAdd,
+
+	TicketController,
+	ticketTemplate,
+	TicketListController,
+	ticketList,
+	TicketEditController,
+	ticketEdit,
+	TicketAddController,
+	ticketAdd,
+
 
 
 ) {
@@ -233,6 +252,37 @@ define([
                     }
                 },
                 controller: AlbumEditController
+            })
+            .state('dashboard.ticket',{
+                parent: 'dashboard',
+                url: '/ticket',
+                template: ticket,
+                controller: TicketController,
+                abstract: true
+            })
+            .state('dashboard.ticket.list',{
+                parent: 'dashboard.album',
+                url: '/list',
+                template: ticketList,
+                controller: TicketListController
+            })
+            .state('dashboard.ticket.add',{
+                parent: 'dashboard.album',
+                url: '/add',
+                template: ticketAdd,
+                controller: TicketAddController
+            })
+            .state('dashboard.ticket.edit',{
+                parent: 'dashboard.ticket',
+                url: '/edit/:ticketId',
+                template: ticketEdit,
+                params: {
+                    id: {
+                        value: null,
+                        squash: true
+                    }
+                },
+                controller: TicketEditController
             });
 
 
