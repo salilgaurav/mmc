@@ -346,7 +346,7 @@ define([
                 $location.path('/login');
             }else {
 
-            };
+            }
 
         });
 
