@@ -1,5 +1,7 @@
 package com.mmc.entity;
 
+import com.mmc.model.Notification;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,7 +17,7 @@ public class NotificationEntity implements Serializable{
 
     @Id
     @Column(name="notification_id")
-    private int id;
+    private String id;
 
     @Column(name="notification_title")
     private String title;
@@ -33,15 +35,23 @@ public class NotificationEntity implements Serializable{
     public NotificationEntity() {
     }
 
+    public NotificationEntity(Notification notification) {
+        this.id = notification.getId();
+        this.title = notification.getTitle();
+        this.date = notification.getDate();
+        this.description = notification.getDescription();
+        this.url = notification.getUrl();
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
