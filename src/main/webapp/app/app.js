@@ -11,6 +11,8 @@ define([
 	'./services/MemberService',
 	'./services/EventService',
 	'./services/TicketService',
+	'./services/AdvertisementService',
+	'./services/localStorage',
 
 	'./directives/FileModel',
 
@@ -27,6 +29,8 @@ define([
         'app.memberService',
         'app.eventService',
         'app.ticketService',
+        'app.advertisementService',
+        'app.localStorage',
 
         'app.fileModel',
 

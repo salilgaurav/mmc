@@ -5,8 +5,8 @@ define([
 	ng
 ) {
 	'use strict';
-	return [ '$scope' , '$location' , 'loginService',
-	function ( $scope ,  $location , loginService) {
+	return [ '$scope' , '$location' , 'loginService', 'localStorageService',
+	function ( $scope ,  $location , loginService , localStorageService) {
 
 	    $scope.loginData = {
 	        email: '',
@@ -18,6 +18,8 @@ define([
                $scope.errorMsg = data.status.statusMsg;
                alert($scope.errorMsg);
             } else {
+
+                localStorageService.set('user',data.userDetails);
                 $location.path('/dashboard/member/list');
             }
         };

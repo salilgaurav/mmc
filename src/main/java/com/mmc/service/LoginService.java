@@ -8,5 +8,7 @@ import com.mmc.model.PasswordInfo;
  */
 public interface LoginService {
 
-    LoginResponse login(PasswordInfo passwordInfo) throws Exception;
+    LoginResponse loginAdmin(PasswordInfo passwordInfo , String loginType) throws Exception;
+
+    LoginResponse login(PasswordInfo passwordInfo ) throws Exception;
 }

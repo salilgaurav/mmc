@@ -28,8 +28,30 @@ public class LoginController {
     @RequestMapping(value = "/admin",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8")
-    public ResponseEntity<LoginResponse> login(@RequestBody PasswordInfo passwordInfo, HttpServletRequest request,
+    public ResponseEntity<LoginResponse> loginAdmin(@RequestBody PasswordInfo passwordInfo, HttpServletRequest request,
                                               HttpServletResponse response) {
+
+        LoginResponse loginResponse = new LoginResponse();
+        try {
+            loginResponse = loginService.loginAdmin(passwordInfo , "admin");
+            return new ResponseEntity<LoginResponse>(loginResponse , HttpStatus.OK);
+        }catch (Exception e){
+            Response res = new Response();
+            res.setStatusCode("L-200");
+            res.setStatus("ERROR");
+            res.setStatusMsg("Login unsucessfull");
+            loginResponse.setStatus(res);
+            System.out.println(e);
+            return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+    @RequestMapping(value = "/",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8")
+    public ResponseEntity<LoginResponse> login(@RequestBody PasswordInfo passwordInfo, HttpServletRequest request,
+                                               HttpServletResponse response) {
 
         LoginResponse loginResponse = new LoginResponse();
         try {
@@ -42,7 +64,7 @@ public class LoginController {
             res.setStatusMsg("Login unsucessfull");
             loginResponse.setStatus(res);
             System.out.println(e);
-            return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.OK);
+            return new ResponseEntity<LoginResponse>(loginResponse, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

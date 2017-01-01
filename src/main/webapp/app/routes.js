@@ -55,8 +55,16 @@ define([
     './dashboard/tickets/TicketEditController',
     'text!./dashboard/tickets/ticket.edit.html',
     './dashboard/tickets/TicketAddController',
-    'text!./dashboard/tickets/ticket.add.html'
+    'text!./dashboard/tickets/ticket.add.html',
 
+    './dashboard/advertisement/AdvertisementController',
+    'text!./dashboard/advertisement/index.html',
+    './dashboard/advertisement/AdvertisementListController',
+    'text!./dashboard/advertisement/advertisement.list.html',
+    './dashboard/advertisement/AdvertisementEditController',
+    'text!./dashboard/advertisement/advertisement.edit.html',
+    './dashboard/advertisement/AdvertisementAddController',
+    'text!./dashboard/advertisement/advertisement.add.html'
 
 ], function (
 	ng,
@@ -112,14 +120,25 @@ define([
 	TicketEditController,
 	ticketEdit,
 	TicketAddController,
-	ticketAdd
+	ticketAdd,
+
+
+    AdvertisementController,
+	advertisementTemplate,
+	AdvertisementListController,
+	advertisementList,
+	AdvertisementEditController,
+	advertisementEdit,
+	AdvertisementAddController,
+	advertisementAdd
 
 
 
 ) {
 	'use strict';
 
-	ng.module('app.routes',[]).config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider' , function( $stateProvider, $urlRouterProvider, $locationProvider , $httpProvider ) {
+	ng.module('app.routes',[])
+	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider' , function( $stateProvider, $urlRouterProvider, $locationProvider , $httpProvider ) {
 
 		// Default state or if unmatched redirect to this state
 		$urlRouterProvider.otherwise( '/login' );
@@ -283,9 +302,53 @@ define([
                     }
                 },
                 controller: TicketEditController
-            });
+            })
+            .state('dashboard.ad',{
+                 parent: 'dashboard',
+                 url: '/ad',
+                 template: advertisementTemplate,
+                 controller: AdvertisementController,
+                 abstract: true
+             })
+             .state('dashboard.ad.list',{
+                 parent: 'dashboard.ad',
+                 url: '/list',
+                 template: advertisementList,
+                 controller: AdvertisementListController
+             })
+             .state('dashboard.ad.add',{
+                 parent: 'dashboard.ad',
+                 url: '/add',
+                 template: advertisementAdd,
+                 controller: AdvertisementAddController
+             })
+             .state('dashboard.ad.edit',{
+                 parent: 'dashboard.ad',
+                 url: '/edit/:id',
+                 template: advertisementEdit,
+                 params: {
+                     id: {
+                         value: null,
+                         squash: true
+                     }
+                 },
+                 controller: AdvertisementEditController
+             });
 
 
+
+
+	}])
+	.run([ '$location' , '$rootScope' , 'localStorageService' , function( $location , $rootScope , localStorageService  ){
+
+        $rootScope.$on('$stateChangeStart' , function() {
+            if( !localStorageService.get('user') ) {
+                $location.path('/login');
+            }else {
+
+            };
+
+        });
 
 	}]);
 });

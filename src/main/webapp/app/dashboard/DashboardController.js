@@ -9,8 +9,8 @@ define([
 	moment
 ) {
 	'use strict';
-	return [ '$scope' , '$location',
-	function ( $scope ,  $location ) {
+	return [ '$scope' , '$location', '$state' , 'localStorageService' ,
+	function ( $scope ,  $location , $state ,  localStorageService) {
 
         function init_pikaday(){
             return new pikaday({
@@ -34,10 +34,17 @@ define([
                 document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
                 var t = setTimeout(function () {
                     startTime();
-                }, 500);
+                }, 0);
             }
             startTime();
         })();
+
+
+        $scope.logOut = function() {
+
+            localStorageService.remove('user');
+            $state.go('login');
+        };
 
 	}];
 });
