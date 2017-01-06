@@ -83,6 +83,14 @@ public class MemberInfo implements Serializable {
         this.status = status;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "MemberInfo{" +

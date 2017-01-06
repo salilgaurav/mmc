@@ -3,6 +3,7 @@ package com.mmc.controller;
 import com.mmc.model.MemberInfo;
 import com.mmc.model.PasswordInfo;
 import com.mmc.model.Response;
+import com.mmc.model.SignUpModel;
 import com.mmc.service.MemberServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -142,6 +143,34 @@ public class MemberController {
             res.setStatusCode("IE-500-delete");
             res.setStatusMsg(e.getMessage());
             return new ResponseEntity<Response>(res, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+
+    @RequestMapping(value = "/signup",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8")
+    public ResponseEntity<Response> signUp(@RequestBody SignUpModel signUpModel, HttpServletRequest request,
+                                           HttpServletResponse response) {
+
+        try {
+            if (memberService.addMember(signUpModel)) {
+                res.setStatus("SUCCESS");
+                res.setStatusCode("S-200");
+                res.setStatusMsg("Added successfully!");
+                return new ResponseEntity<Response>(res, HttpStatus.OK);
+            } else {
+                res.setStatus("ERROR");
+                res.setStatusCode("E-200");
+                res.setStatusMsg("Email already registered!");
+                return new ResponseEntity<Response>(res, HttpStatus.OK);
+            }
+        }catch (Exception e){
+            res.setStatus("ERROR");
+            res.setStatusCode("IE-500-add");
+            res.setStatusMsg(e.getMessage());
+            return new ResponseEntity<Response>(res, HttpStatus.OK);
         }
 
     }

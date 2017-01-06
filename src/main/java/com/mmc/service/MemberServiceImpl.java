@@ -5,6 +5,7 @@ import com.mmc.entity.MemberEntity;
 import com.mmc.entity.MemberEntityPK;
 import com.mmc.model.MemberInfo;
 import com.mmc.model.PasswordInfo;
+import com.mmc.model.SignUpModel;
 import com.mmc.repository.MemberRepository;
 import com.mmc.util.CryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,28 @@ public class MemberServiceImpl implements MemberService {
             return false;
         }
     }
+
+    public boolean addMember(SignUpModel signUpModel) throws Exception{
+        System.out.println("Siginup member ===================>" + signUpModel.toString());
+        MemberEntity member = memberRepository.findByEmail(signUpModel.getEmail());
+        if( member == null  ) {
+            CryptUtil cryptUtil = new CryptUtil();
+            MemberEntity memberEntity = new MemberEntity();
+            MemberEntityPK memberEntityPK = new MemberEntityPK();
+
+            memberEntityPK.setEmail(signUpModel.getEmail());
+            memberEntity.setFirstName(signUpModel.getFirstName());
+            memberEntity.setLastName(signUpModel.getLastName());
+            memberEntity.setMemberEntityPk(memberEntityPK);
+            memberEntity.setPass(cryptUtil.encrypt(signUpModel.getPass()));
+            memberEntity.setMemberEntityPk(memberEntityPK);
+            memberRepository.save(memberEntity);
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 
     public boolean updateMember(MemberInfo memberInfo) throws Exception {
         System.out.println("Updating member ===================>" + memberInfo.toString());
